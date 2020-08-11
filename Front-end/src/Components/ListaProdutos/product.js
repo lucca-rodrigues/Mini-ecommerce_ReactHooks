@@ -1,39 +1,41 @@
-import React, { useState } from 'react';
-import ListarProdutos from './listar-produtos';
+import React, {useState} from 'react';
+import Product from '../ListaProdutos';
 import PropTypes from 'prop-types';
-import Alert from 'react-bootstrap/Alert';
+import {Alert} from 'react-bootstrap';
 
-// import { Container } from './styles';
+function ListaProdutos(props) {
+  const [showMsg, setShowMsg] = useState(false);
+  const [produto, setProduto] = useState('');
 
-function Products(props) {
-  const [message, setMessage] = useState(false);
-  const [product, setProduct] = useState('')
+  function visible() {
+    return props.visible ? null : 'hidden';
+  }
 
-  function handleMessageSuccess(produto) {
-    setMessage(true);
-    setProduct(produto.nome);
+  function handleMessage(produto){
+    setShowMsg(true);
+    setProduto(produto.nome);
     setTimeout(() => {
-      setMessage(false);
+      setShowMsg(false)
     }, 3000);
   }
-
-  function visibleProduct() {
-    return props.visibleProduct ? null : 'hidden'
-  }
   return (
-    <div className={visibleProduct()}>
+    <div className={visible()}>
       <Alert
         variant="success"
         style={{ margin: '10px' }}
-        show={message}
-      >
+        show={showMsg}>
         <b>{produto}</b> adicionado com sucesso ao carrinho!
-        </Alert>
-      <ListarProdutos
-
-      />
+      </Alert>
+      <Product
+        handleMessage={showMsg}
+        adicionarProduto={props.adicionarProduto} />
     </div>
   )
+}
+
+ListaProdutos.propTypes = {
+  visivel: PropTypes.bool.isRequired,
+  adicionarProduto: PropTypes.func.isRequired
 }
 
 export default ListaProdutos;
