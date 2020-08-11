@@ -32,10 +32,10 @@ function App() {
     }
   }
 
-  // function handleProducts(){
-  //   setShowCheckout(false);
-  //   setShowProducts(true);
-  // }
+  function handleProducts(){
+    setShowCheckout(false);
+    setShowProducts(true);
+  }
 
   function handleShowCheckout(){
 
