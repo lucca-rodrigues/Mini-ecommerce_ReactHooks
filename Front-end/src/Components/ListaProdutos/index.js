@@ -18,7 +18,7 @@ function ListaProdutos(props) {
   function handlePurchaseProduct(e, produto){
     e.preventDefault();
     props.handleAddProductToCart(produto);
-    props.handleMessageSuccess(produto);
+    props.handleMessage(produto);
     console.log('Comprando ' + produto.nome);
   }
 

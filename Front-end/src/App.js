@@ -12,7 +12,24 @@ function App() {
   const [total, setTotal] = useState('0,00');
 
   function handleAddProductToCart(produto){
-    alert('teste');
+    const objCart = Object.assign({}, cart);
+    // Atualiza a quantidade do carrinho
+    let newProduct = true;
+    objCart.produtos.forEach((product, index) =>{
+      if(product.nome === produto.nome){
+        objCart.produtos[index].quantidade++;
+        newProduct = false;
+      }
+    });
+
+    // Adiciona um Novo produto ao Carneirinho
+    if(newProduct){
+      objCart.produtos.push({
+        nome: produto.nome,
+        preco: produto.preco,
+        quantidade: 1
+      });
+    }
   }
 
   // function handleProducts(){
@@ -20,21 +37,21 @@ function App() {
   //   setShowProducts(true);
   // }
 
-  // function handleShowCheckout(){
+  function handleShowCheckout(){
 
-  // }
+  }
 
-  // function handleClearCart(){
+  function handleClearCart(){
 
-  // }
+  }
   return (
     <>
-      <Menu></Menu>
+      <Menu />
       <Product
         visible={showProducts}
         handleAddProductToCart={handleAddProductToCart}
       />
-      <Checkout></Checkout>
+      <Checkout/>
     </>
   );
 }

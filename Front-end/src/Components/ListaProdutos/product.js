@@ -18,6 +18,7 @@ function ListaProdutos(props) {
       setShowMsg(false)
     }, 3000);
   }
+
   return (
     <div className={visible()}>
       <Alert
@@ -27,15 +28,15 @@ function ListaProdutos(props) {
         <b>{produto}</b> adicionado com sucesso ao carrinho!
       </Alert>
       <Product
-        handleMessage={showMsg}
-        adicionarProduto={props.adicionarProduto} />
+        handleMessage={handleMessage}
+        handleAddProductToCart={props.handleAddProductToCart} />
     </div>
   )
 }
 
 ListaProdutos.propTypes = {
-  visivel: PropTypes.bool.isRequired,
-  adicionarProduto: PropTypes.func.isRequired
+  visible: PropTypes.bool.isRequired,
+  handleAddProductToCart: PropTypes.func.isRequired
 }
 
 export default ListaProdutos;
