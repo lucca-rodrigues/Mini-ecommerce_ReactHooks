@@ -11,12 +11,13 @@ function App() {
   const [showCheckout, setShowCheckout] = useState(false);
   const [total, setTotal] = useState('0,00');
 
-  function handleAddProduct(){
+  function handleAddProductToCart(produto){
 
   }
 
   function handleProducts(){
-
+    setShowCheckout(false);
+    setShowProducts(true);
   }
 
   function handleShowCheckout(){
@@ -29,7 +30,9 @@ function App() {
   return (
     <>
       <Menu></Menu>
-      <ListaProdutos></ListaProdutos>
+      <ListaProdutos
+        visibleProduct={showProducts}
+      ></ListaProdutos>
       <Checkout></Checkout>
     </>
   );
