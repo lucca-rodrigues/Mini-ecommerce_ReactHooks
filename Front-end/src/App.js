@@ -22,7 +22,7 @@ function App() {
       }
     });
 
-    // Adiciona um Novo produto ao Carneirinho
+    // Adiciona um Novo produto ao Carrinho
     if(newProduct){
       objCart.produtos.push({
         nome: produto.nome,
@@ -32,13 +32,15 @@ function App() {
     }
   }
 
-  function handleProducts(){
+  function handleShowProducts(){
     setShowCheckout(false);
     setShowProducts(true);
   }
 
-  function handleShowCheckout(){
-
+  function handleShowCheckout(total){
+    setShowCheckout(true);
+    setShowProducts(false);
+    setTotal(total); // Valor Enviado por props
   }
 
   function handleClearCart(){
@@ -46,7 +48,12 @@ function App() {
   }
   return (
     <>
-      <Menu />
+      <Menu
+        product={cart.product}
+        handleShowProducts={handleShowProducts}
+        handleShowCheckout={handleShowCheckout}
+
+      />
       <Product
         visible={showProducts}
         handleAddProductToCart={handleAddProductToCart}
