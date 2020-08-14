@@ -5,6 +5,22 @@ import PropTypes from 'prop-types';
 import ItensCart from './ItensCart';
 
 function Menu(props) {
+  function calculateTotal(){
+    // if (props.produtos.length === 0){
+    //   return '0,00';
+    // }
+
+    let total = 0;
+    props.produtos.forEach(produto =>{
+       // Converte, para . e remove o R$
+      let preco = produto.preco.replace('.', ',').replace('R$ ', '');
+      total += parseFloat(preco) * produto.quantidade;
+    });
+
+    // Converte novamente os . para ,
+
+    return total.toFixed(2).toString().replace('.', ',');
+  }
 
 
   return (
@@ -33,16 +49,17 @@ function Menu(props) {
             <NavDropdown.Divider />
             <NavDropdown.Item href="" data-testid="total-carrinho">
               Total: R$
-              {/* {TotalCalculate()} */}
+              {calculateTotal()}
+              {/* {calculateTotal(total)} */}
             </NavDropdown.Item>
             <span
-              className={props.produtos === 0 ? 'hidden' : null}
+              //className={props.produtos.length === 0 ? 'hidden' : null}
             >
               <NavDropdown.Divider />
               <NavDropdown.Item
                 href=""
                 style={{ color: 'green' }}
-                onClick={() => props.handleShowCheckout()}
+                onClick={() => props.handleShowCheckout(calculateTotal)}
                 >
                 <FaCashRegister size={20}/>
                 &nbsp;
