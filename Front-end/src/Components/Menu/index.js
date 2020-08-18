@@ -6,19 +6,18 @@ import ItensCart from './ItensCart';
 
 function Menu(props) {
   function calculateTotal(){
-    // if (props.produtos.length === 0){
-    //   return '0,00';
-    // }
+    if (props.produtos.length === 0){
+      return '0,00';
+    }
 
     let total = 0;
     props.produtos.forEach(produto =>{
-       // Converte, para . e remove o R$
+       // Converte , para . e remove o R$
       let preco = produto.preco.replace('.', ',').replace('R$ ', '');
       total += parseFloat(preco) * produto.quantidade;
     });
 
     // Converte novamente os . para ,
-
     return total.toFixed(2).toString().replace('.', ',');
   }
 
@@ -50,10 +49,9 @@ function Menu(props) {
             <NavDropdown.Item href="" data-testid="total-carrinho">
               Total: R$
               {calculateTotal()}
-              {/* {calculateTotal(total)} */}
             </NavDropdown.Item>
             <span
-              //className={props.produtos.length === 0 ? 'hidden' : null}
+              className={props.produtos.length === 0 ? 'hidden' : null}
             >
               <NavDropdown.Divider />
               <NavDropdown.Item

@@ -15,8 +15,8 @@ function App() {
     const objCart = Object.assign({}, cart);
     // Atualiza a quantidade do carrinho
     let newProduct = true;
-    objCart.produtos.forEach((product, index) =>{
-      if(product.nome === produto.nome){
+    objCart.produtos.forEach((produto, index) =>{
+      if(produto.nome === produto.nome){
         objCart.produtos[index].quantidade++;
         newProduct = false;
       }
@@ -30,6 +30,7 @@ function App() {
         quantidade: 1
       });
     }
+    setCart(objCart);
   }
 
   function handleShowProducts(){
@@ -44,12 +45,12 @@ function App() {
   }
 
   function handleClearCart(){
-
+    setCart({ produtos: []});
   }
   return (
     <>
       <Menu
-        product={cart.product}
+        produtos={cart.produtos}
         handleShowProducts={handleShowProducts}
         handleShowCheckout={handleShowCheckout}
 
@@ -58,7 +59,13 @@ function App() {
         visible={showProducts}
         handleAddProductToCart={handleAddProductToCart}
       />
-      <Checkout/>
+      <Checkout
+        visible={showCheckout}
+        handleShowProducts={handleShowProducts}
+        total={total}
+        produtos={cart}
+        handleClearCart={handleClearCart}
+      />
     </>
   );
 }
