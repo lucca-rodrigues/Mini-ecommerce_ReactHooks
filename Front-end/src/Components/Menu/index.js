@@ -44,7 +44,7 @@ function Menu(props) {
               <strong>Produtos</strong>
             </NavDropdown.Item>
             <NavDropdown.Divider />
-            <ItensCart produtos={props.produtos} />
+              <ItensCart produtos={props.produtos} />
             <NavDropdown.Divider />
             <NavDropdown.Item href="" data-testid="total-carrinho">
               Total: R$
