@@ -11,7 +11,7 @@ function ItensCart(props) {
     if(props.produtos.length === 0){
       return (
         <NavDropdown.Item href="" data-testid="itens">
-          <FaSadTear size={20} />
+          <FaSadTear size={17} />
           Carrinho vazio...
         </NavDropdown.Item>
       );
@@ -19,11 +19,13 @@ function ItensCart(props) {
 
     // Se houver Produtos
     const itens = props.produtos.map(produto =>
-      <NavDropdown.Item href="" key={produto.nome} data-testid={produto.nome}>
+      <NavDropdown.Item href="" key={produto.key} data-testid={produto.nome}>
         {produto.nome} - {produto.quantidade} x {produto.preco}
       </NavDropdown.Item>
+
     );
     return itens;
+    //console.log(itens);
   }
   return renderProducts();
 }

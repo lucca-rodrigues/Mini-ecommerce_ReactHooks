@@ -5,14 +5,14 @@ import PropTypes from 'prop-types';
 
 function ListaProdutos(props) {
   const produtos = [
-    { nome: 'Aprenda Java', preco: 'R$ 59,99' },
-		{ nome: 'JavaScript em 24 horas', preco: 'R$ 19,99' },
-		{ nome: 'React em 7 dias', preco: 'R$ 29,99' },
-		{ nome: 'Algoritmos e Estrutura de Dados', preco: 'R$ 25,99' },
-		{ nome: 'Start-Up', preco: 'R$ 29,99' },
-		{ nome: 'Testes Unitários com Jasmine', preco: 'R$ 14,99' },
-		{ nome: 'APIs RESTful com Spring e Java', preco: 'R$ 15,99' },
-		{ nome: 'TypeScript na prática', preco: 'R$ 9,99' }
+    { key: 1, nome: 'Aprenda Java', preco: 'R$ 59,99' },
+		{ key: 2, nome: 'JavaScript em 24 horas', preco: 'R$ 19,99' },
+		{ key: 3, nome: 'React em 7 dias', preco: 'R$ 29,99' },
+		{ key: 4, nome: 'Algoritmos e Estrutura de Dados', preco: 'R$ 25,99' },
+		{ key: 5, nome: 'Start-Up', preco: 'R$ 29,99' },
+		{ key: 6, nome: 'Testes Unitários com Jasmine', preco: 'R$ 14,99' },
+		{ key: 7, nome: 'APIs RESTful com Spring e Java', preco: 'R$ 15,99' },
+		{ key: 8, nome: 'TypeScript na prática', preco: 'R$ 9,99' }
   ];
 
   function handlePurchaseProduct(e, produto){
@@ -23,11 +23,10 @@ function ListaProdutos(props) {
   }
 
   function render(){
-    let key = 1;
     const cards = produtos.map(produto =>
       <Card
-        key={key}
-        data-testid={'card' + key++}
+        key={produto.key}
+        data-testid={'card' + produto.key}
         style={{ width: '18rem', margin: '10px', float: 'left' }}
       >
         <Card.Img variant="top" src={Placeholder} />
