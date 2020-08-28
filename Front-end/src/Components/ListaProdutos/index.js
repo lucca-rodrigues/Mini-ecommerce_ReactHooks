@@ -2,6 +2,7 @@ import React from 'react';
 import Placeholder from '../../Assets/286x180.png';
 import {Card, Button} from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 function ListaProdutos(props) {
   const produtos = [
@@ -29,25 +30,27 @@ function ListaProdutos(props) {
         data-testid={'card' + produto.key}
         style={{ width: '18rem', margin: '10px', float: 'left' }}
       >
-        <Card.Img variant="top" src={Placeholder} />
-        <Card.Body className="text-center">
-          <Card.Title style={{ height: '40px' }}>
-            {produto.nome}
-          </Card.Title>
-          <Card.Text>
-            Descrição do produto aqui...
-          </Card.Text>
-          <Card.Text>
-            {produto.preco}
-          </Card.Text>
-          <Button
-            variant="success"
-            style={{ width: '100%' }}
-            onClick={(e) => handlePurchaseProduct(e, produto)}
-            >
-            Comprar
-          </Button>
-        </Card.Body>
+        <Link to={`/produtos/${encodeURIComponent(produto.key)}`}>
+          <Card.Img variant="top" src={Placeholder} />
+          <Card.Body className="text-center">
+            <Card.Title style={{ height: '40px' }}>
+              {produto.nome}
+            </Card.Title>
+            <Card.Text>
+              Descrição do produto aqui...
+            </Card.Text>
+            <Card.Text>
+              {produto.preco}
+            </Card.Text>
+            <Button
+              variant="success"
+              style={{ width: '100%' }}
+              onClick={(e) => handlePurchaseProduct(e, produto)}
+              >
+              Comprar
+            </Button>
+          </Card.Body>
+        </Link>
       </Card>
     );
     return cards;
