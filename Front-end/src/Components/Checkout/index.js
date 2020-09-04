@@ -130,7 +130,7 @@ function Checkout(props) {
               data-testid="cidade"
             >
               <option value="">Seleciona a cidade</option>
-              <ListarCidades estado={'PR'}/>
+              <ListarCidades estado={'RJ'}/>
             </Form.Control>
 
             <Form.Control.Feedback type="invalid">
@@ -236,6 +236,10 @@ function Checkout(props) {
       </Modal>
     </Jumbotron>
   )
+}
+
+Checkout.propTypes = {
+  visivel: PropTypes.bool.isRequired,
 }
 
 export default Checkout;

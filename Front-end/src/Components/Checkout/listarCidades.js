@@ -7,13 +7,15 @@ function ListarCidades(props) {
   const [cidades, setCidades] = useState([]);
 
   useEffect(() => {
-    async function obterCidades(){
+    async function obterCidades(req, res){
       try {
-        let {data} = await axios.get(CIDADES_URL.replace(':estado', props.estado));
+        let {data} = await axios.get(CIDADES_URL.replace(':siglaEstado', props.estado));
         setCidades(data);
 
-      } catch (error) {
+      } catch (err) {
         setCidades([]);
+        console.log(res.status(err));
+        ;
       }
     }
     if (props.estados !== ''){
