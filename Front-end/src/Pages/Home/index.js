@@ -32,8 +32,8 @@ function Home() {
   }
 
   function handleShowProducts(){
-    setShowProducts(true);
     setShowCheckout(false);
+    setShowProducts(true);
   }
 
   function handleShowCheckout(total){

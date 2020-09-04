@@ -219,7 +219,7 @@ function Checkout(props) {
         </Modal.Footer>
       </Modal>
 
-      <Modal show={true} data-testid="modal-sucecss">
+      <Modal show={false} data-testid="modal-sucecss">
         <Modal.Header closeButton>
           <Modal.Title>Erro ao processar pedido</Modal.Title>
         </Modal.Header>
