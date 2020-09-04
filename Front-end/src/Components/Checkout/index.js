@@ -11,10 +11,16 @@ import ListarCidades from './listarCidades';
 registerLocale('pt', pt);
 
 function Checkout(props) {
+
+  function visible(){
+    return props.visible ? null : 'hidden';
+  }
+
   return (
     <Jumbotron
       fluid
       style={{margin: '10px', padding: '30px'}}
+      className={visible()}
     >
       <h3 className="text-center">Finalizar compra</h3>
 
@@ -239,7 +245,12 @@ function Checkout(props) {
 }
 
 Checkout.propTypes = {
-  visivel: PropTypes.bool.isRequired,
+  visible: PropTypes.bool.isRequired,
+  handleShowProducts: PropTypes.func.isRequired,
+  total: PropTypes.string.isRequired,
+  produtos: PropTypes.object.isRequired,
+  handleClearCart: PropTypes.func.isRequired,
+
 }
 
 export default Checkout;
