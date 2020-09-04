@@ -32,13 +32,13 @@ function Home() {
   }
 
   function handleShowProducts(){
-    setShowCheckout(false);
     setShowProducts(true);
+    setShowCheckout(false);
   }
 
   function handleShowCheckout(total){
-    setShowCheckout(true);
     setShowProducts(false);
+    setShowCheckout(true);
     setTotal(total); // Valor Enviado por props
   }
 
